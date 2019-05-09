@@ -61,13 +61,13 @@ for row in rows_silver:
   silver_data.append([ele for ele in cols[0:2] if ele])
 
 # Write data onto csv
-# with open('index.csv', 'a') as csv_file:
-#   writer = csv.writer(csv_file)
-#   for row in range(0, len(gold_data)):
-#     writer.writerow([gold_data[row][0],gold_data[row][1],silver_data[row][0],silver_data[row][1]])
-# print ("Successly created index.csv")
+with open('index.csv', 'a') as csv_file:
+  writer = csv.writer(csv_file)
+  for row in range(0, len(gold_data)):
+    writer.writerow([gold_data[row][0],gold_data[row][1],silver_data[row][0],silver_data[row][1]])
+print ("Successly created index.csv")
 
-
+# Initialize db
 db = pymysql.connect("localhost", "testing", "testing", "gold_silver")
 cursor = db.cursor()
 
