@@ -1,6 +1,20 @@
 import csv
 import urllib.request as urllib2
 from bs4 import BeautifulSoup
+import pymysql
+
+db = pymysql.connect("localhost", "testing", "testing", "gold_silver")
+cursor = db.cursor()
+cursor.execute("DROP TABLE IF EXISTS PRICES")
+sql = """CREATE TABLE PRICES (
+   GOLD_DATE  CHAR(20) NOT NULL,
+   GOLD_PRICE  CHAR(20) NOT NULL,
+   SILVER_DATE  CHAR(20) NOT NULL,
+   SILVER_PRICE  CHAR(20) NOT NULL
+   )"""
+cursor.execute(sql)
+db.close()
+
 
 gold_url = "https://www.investing.com/commodities/gold-historical-data"
 silver_url = "https://www.investing.com/commodities/silver-historical-data"
@@ -29,6 +43,8 @@ for row in rows_gold:
   cols = [ele.text.strip() for ele in cols]
   gold_data.append([ele for ele in cols[0:2] if ele])
 
+
+
 # SILVER DATA
 req_silver = urllib2.Request(url = silver_url, headers=headers)
 html_silver = urllib2.urlopen(req_silver)
@@ -45,9 +61,27 @@ for row in rows_silver:
   silver_data.append([ele for ele in cols[0:2] if ele])
 
 # Write data onto csv
-with open('index.csv', 'a') as csv_file:
-  writer = csv.writer(csv_file)
-  for row in range(0, len(gold_data)):
-    writer.writerow([gold_data[row][0],gold_data[row][1],silver_data[row][0],silver_data[row][1]])
+# with open('index.csv', 'a') as csv_file:
+#   writer = csv.writer(csv_file)
+#   for row in range(0, len(gold_data)):
+#     writer.writerow([gold_data[row][0],gold_data[row][1],silver_data[row][0],silver_data[row][1]])
+# print ("Successly created index.csv")
 
-print ("Successly created index.csv")
+
+db = pymysql.connect("localhost", "testing", "testing", "gold_silver")
+cursor = db.cursor()
+
+# Write data into mysql db
+for row in range(0, min(len(gold_data),len(silver_data))):
+    db_data_insert = (gold_data[row][0],gold_data[row][1],silver_data[row][0],silver_data[row][1])
+    sql = """INSERT INTO PRICES(`GOLD_DATE`,`GOLD_PRICE`,`SILVER_DATE`,`SILVER_PRICE`)
+          VALUES (%s,%s,%s,%s)"""
+    try:
+        cursor.execute(sql, db_data_insert)
+        db.commit()
+    except pymysql.Error:
+        print ("Error in transcribing data to mySQL database")
+        db.rollback()
+
+db.close()
+print ("Data successfully transcribed to mySQL database")
