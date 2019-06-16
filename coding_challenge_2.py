@@ -7,6 +7,8 @@ from datetime import datetime
 import csv
 import pymysql
 
+app = Flask(__name__)
+
 raw_sql_data = []
 db = pymysql.connect("localhost", "testing", "testing", "gold_silver")
 cursor = db.cursor()
@@ -25,8 +27,6 @@ except:
   print("Error: unable to fetch data")
 
 db.close()
-
-app = Flask(__name__)
 
 @app.route('/commodity', methods=["GET"])
 def get_data():
