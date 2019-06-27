@@ -22,8 +22,7 @@ class App extends React.Component {
     );
   }
 
-  
-  render(){
+  renderContent(){
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -32,7 +31,15 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat}/>;
     }
 
-    return <div><Spinner /></div>; 
+    return <div><Spinner message="Please accept location request"/></div>; 
+  }
+
+  render(){
+    return(
+      <div className="border red">
+        {this.renderContent()}
+      </div>
+    )
   }
 };
 
