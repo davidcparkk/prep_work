@@ -1,2 +1,0 @@
-// Tree.prototoype.traverse = 
-
