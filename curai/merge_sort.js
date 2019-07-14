@@ -37,4 +37,5 @@ Array.prototype.merge = function (arr, func) {
 console.log([1,65,2,4,6,3,3].mergeSort());
 
 // time complexity (nlogn), need to iterate through entire input (n) and it is halved each time (O(n))
+  // n items iterated logn times
 // space ((n))
