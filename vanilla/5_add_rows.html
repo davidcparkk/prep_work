@@ -3,13 +3,16 @@
 <html><head><meta charset=utf-8 />
 <title>Insert row in a table - w3resource</title>
 <script>
-  function insert_Row()
-    {
-    var x=document.getElementById('sampleTable').insertRow(0);
-    var y = x.insertCell(0);
-    var z = x.insertCell(1);
-    y.innerHTML="New Cell1";
-    z.innerHTML="New Cell2";
+  function insert_Row(){
+    const sampleTable = document.getElementById('sampleTable');
+    const NUM_ROWS = sampleTable.rows.length;
+
+    const rowX = sampleTable.insertRow(NUM_ROWS);
+    const cell1 = rowX.insertCell(0);
+    const cell2 = rowX.insertCell(1);
+
+    cell1.innerHTML = `Row${NUM_ROWS+1} cell1`;
+    cell2.innerHTML = `Row${NUM_ROWS+1} cell2`;
   }
 
 </script>
@@ -17,11 +20,15 @@
 
 
 <body>
+
 <table id="sampleTable" border="1">
 <tr><td>Row1 cell1</td>
 <td>Row1 cell2</td></tr>
+
 <tr><td>Row2 cell1</td>
 <td>Row2 cell2</td></tr>
-</table><br>
+</table>
+
+<br>
 <input type="button" onclick="insert_Row()" value="Insert row"> 
 </body></html>
