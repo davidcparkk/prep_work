@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Create Flat Image</title>
+  <link rel="stylesheet" href="./dist/main.css">
+</head>
+<body>
+  <div id="container">
+    <div class="header">
+      <div class="title">
+        <h2>Create Flat Image</h2>
+      </div>
+      <form class="main-form">
+        <div class="title">
+          <label for="txt">
+            Input text overlay:
+          </label>
+          <input 
+              id="txt"
+              name="txt"
+              type="text"
+            />
+        
+          <label for="blend">
+            Input blend hexadecimal color code overlay:
+          </label>
+          <input 
+              id="blend"
+              name="blend"
+              type="text"
+            />
+          </div>
+          <input 
+              value="Submit"
+              type="submit"
+            />
+    </form>
+    </div>
+    <div class="image-container">
+      <img src="https://assets.imgix.net/examples/butterfly.jpg" class="main-img"/>
+    </div>
+
+  </div>
+</body>
+</html>

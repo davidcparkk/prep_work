@@ -1,0 +1,23 @@
+body{
+  background-color: #171e23;
+}
+
+.image-container{
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+}
+
+.main-img{
+  height:400px;
+  max-width: 100%;
+}
+
+.header{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  background-color: #212b32;
+  color: white;
+}
+
