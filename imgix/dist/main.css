@@ -21,3 +21,26 @@ body{
   color: white;
 }
 
+.input-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+}
+
+.inputs > label {
+  padding-right: 25px;
+}
+
+.button{
+  margin-left: 3px;
+  margin-top: 3px;
+  background-color: #f8510f;
+  color: white;
+  cursor: pointer;
+}
+

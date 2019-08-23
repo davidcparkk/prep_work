@@ -14,29 +14,33 @@
         <h2>Create Flat Image</h2>
       </div>
       <form class="main-form">
-        <div class="title">
-          <label for="txt">
-            Input text overlay:
-          </label>
-          <input 
-              id="txt"
-              name="txt"
-              type="text"
-            />
-        
-          <label for="blend">
-            Input blend hexadecimal color code overlay:
-          </label>
-          <input 
-              id="blend"
-              name="blend"
-              type="text"
-            />
+        <div class="input-container">
+          <div class="inputs">
+            <label for="txt">
+              Input text overlay
+            </label>
+            <input 
+                id="txt"
+                name="txt"
+                type="text"
+              />
           </div>
-          <input 
-              value="Submit"
-              type="submit"
-            />
+          <div class="inputs">
+            <label for="blend">
+              Input blend hexadecimal color code
+            </label>
+            <input 
+                id="blend"
+                name="blend"
+                type="text"
+              />
+            </div>
+        </div>
+        <input
+            class="button" 
+            value="Submit"
+            type="submit"
+          />
     </form>
     </div>
     <div class="image-container">
