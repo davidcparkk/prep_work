@@ -3,18 +3,18 @@ body{
   font-family: 'Nunito', sans-serif;
 }
 
-.wrap {
+#wrap {
   position:relative;
 }
 
-.wrap:before{
+#wrap:before{
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  /* background: #e5d2d2; */
+  background: var(--color,'');
   opacity: .7;
   z-index: 999;
 }
@@ -51,6 +51,9 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: 45px;
+  font-weight: bold;
+  opacity: 0.9;
 }
 
 .inputs {

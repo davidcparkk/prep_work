@@ -1,13 +1,22 @@
-const generateImg = () => {
-  // event.preventDefault();
+const clearText = () => {
+  // document.getElementById('txt').value = '';
+  // document.getElementById('blend').value = '';
+}
+
+const urlParams = () => {
+  getTxt();
+  getBlend();
+}
+
+const getTxt = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const txtParam = urlParams.get('txt');
-  let img = document.getElementById('text-overlay');
-  let container = document.getElementById('main-img');
-  // img.appendChild(document.createTextNode(txtParam));
-  img.innerHTML = txtParam;
-  // container.style.background = "#e5d2d2";
-  // container.style.overflow = "hidden";
-  // // container.style.height = "100%";
-  // container.style.zIndex = "2";
+  document.getElementById('text-overlay').innerHTML = txtParam;
+}
+
+const getBlend = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const blendParam = urlParams.get('blend');
+  const wrap = document.getElementById('wrap');
+  wrap.style.setProperty('--color', '#'+blendParam)  ;
 }
