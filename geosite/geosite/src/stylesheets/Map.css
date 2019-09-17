@@ -1,0 +1,23 @@
+body{
+  font-family: 'Nunito', sans-serif;
+}
+
+.ui-row {
+  display: block;
+  /* flex-direction: row;
+  justify-content: space-between; */
+  margin: auto;
+}
+
+.list-container{
+  float: right;
+  padding-right: 50px
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
-import Map from './Map';
+import MapContainer from './Map';
 import LocationList from './LocationList';
+import '../stylesheets/Map.css';
 
 class App extends React.Component {
   state = {
@@ -9,14 +10,21 @@ class App extends React.Component {
 
   render(){
     return(
-      <div className="ui container">
-        <div className="ui grid">
-          <div className="ui row">
-            <Map />
-            <LocationList />
+        <div className="ui-grid">
+          <div className="ui-row">
+            <div className="header">
+              <h1>Geosite Coding Task (Frontend Engineer)</h1>
+              <h2>David Park's Residences and Employers</h2>
+            </div>
+            <div className="map-container">
+              <MapContainer />
+            </div>
+            <div className="list-container">
+              
+              <LocationList />
+            </div>
           </div>
         </div>
-      </div>
     )
   }
 };

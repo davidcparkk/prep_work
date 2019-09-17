@@ -31,11 +31,12 @@ class MapContainer extends React.Component {
 
   render() {
     const mapStyles = {
-      width: '50%',
-      height: '50%',
+      width: '80%',
+      height: '80%',
+      
     };
 
-    return <div>
+    return (
       <Map 
         google={this.props.google}
         zoom={8}
@@ -44,8 +45,7 @@ class MapContainer extends React.Component {
       >
         {this.displayMarkers()}
       </Map>
-        
-    </div>;
+    )
   }
 }
 
