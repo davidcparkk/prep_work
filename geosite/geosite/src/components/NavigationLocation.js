@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import LocationList from './LocationList';
 
 class NavigationLocation extends React.Component {
@@ -18,8 +18,8 @@ class NavigationLocation extends React.Component {
     return(
       <div className="nav-container">
         <ul className="navbar">
-          <li value="Residences" onClick={this.handleChange} data-id="Residences" className="navbar-li" style={{backgroundColor: '#66ccff'}}>Residences</li>
-          <li value="Employers" onClick={this.handleChange}data-id="Employers" className="navbar-li" style={{backgroundColor: '#ffcccc'}}>Employers</li>
+          <li value="Residences" onClick={this.handleChange} data-id="Residences" className="navbar-li" style={{backgroundColor: '#66ccff'}}>Residences (previous 3)</li>
+          <li value="Employers" onClick={this.handleChange}data-id="Employers" className="navbar-li" style={{backgroundColor: '#ffcccc'}}>Employers (previous 3)</li>
         </ul>
         
         {

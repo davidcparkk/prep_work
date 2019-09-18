@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect} from 'react-redux';
-import LocationItem from './LocationItem';
+import { connect } from 'react-redux';
 import { selectLocation } from '../actions';
 
 class LocationList extends React.Component {
@@ -25,18 +24,9 @@ class LocationList extends React.Component {
     return(
       <div className={`location-list-${this.props.color}`}>
         {this.renderList()}
-        {/* {this.renderEmployers()} */}
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state);
-  return {
-    residences: state.residences,
-    employers: state.employers
-  }
-}
-
-export default connect(mapStateToProps, { selectLocation } )(LocationList);
+export default connect(null, { selectLocation } )(LocationList);

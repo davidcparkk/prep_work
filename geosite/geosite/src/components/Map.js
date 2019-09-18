@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import KEYS from '../config/keys';
 
 class MapContainer extends React.Component {
@@ -19,7 +19,6 @@ class MapContainer extends React.Component {
         lat: residence.lat,
         lng: residence.lng
       }}
-      onClick={() => console.log("You clicked me!")}
       />
     })
   }
@@ -30,7 +29,6 @@ class MapContainer extends React.Component {
         lat: employer.lat,
         lng: employer.lng
       }}
-      onClick={() => console.log("You clicked me!")}
       />
     })
   }  
@@ -49,10 +47,9 @@ class MapContainer extends React.Component {
     };
 
     return (
-      
       <Map 
         google={this.props.google}
-        zoom={14}
+        zoom={12}
         style={mapStyles}
         center={coords}
       >
