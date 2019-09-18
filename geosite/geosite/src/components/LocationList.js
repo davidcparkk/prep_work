@@ -23,7 +23,7 @@ class LocationList extends React.Component {
 
   render(){
     return(
-      <div className="location-list">
+      <div className={`location-list-${this.props.color}`}>
         {this.renderList()}
         {/* {this.renderEmployers()} */}
       </div>

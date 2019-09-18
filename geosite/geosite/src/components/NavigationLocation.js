@@ -24,8 +24,8 @@ class NavigationLocation extends React.Component {
         
         {
           this.state.selectedSubgroup === 'Employers' ?
-          <LocationList subgroup={this.props.employers} color={'#ffcccc'}/>
-          : <LocationList subgroup={this.props.residences} color={'66ccff'}/>
+          <LocationList subgroup={this.props.employers} color={'red'}/>
+          : <LocationList subgroup={this.props.residences} color={'blue'}/>
         }
       </div>
     )
