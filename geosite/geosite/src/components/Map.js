@@ -13,22 +13,6 @@ class MapContainer extends React.Component {
     }
   }
 
-
-  // componentDidUpdate(prevProps, prevState){
-  //   if (prevProps.selectedLocation !== this.props.selectedLocation){
-  //     const params = this.props.google.maps.LatLng({
-  //       lat: this.props.selectedLocation.lat,
-  //       lng: this.props.selectedLocation.lng,
-  //     });
-  //     // this.props.google.maps.Map.panTo( 
-  //     //   params
-  //     //  );
-  //     console.log(params);
-  //     // console.log(this.props.google.maps);
-  //     // console.log(this.props.google.maps.Map);
-  //   } 
-  // }
-
   displayMarkersResidences = () => {
     return this.props.residences.map( (residence, index) => {
       return <Marker key={index} id={index} position={{
@@ -68,7 +52,7 @@ class MapContainer extends React.Component {
       
       <Map 
         google={this.props.google}
-        zoom={8}
+        zoom={14}
         style={mapStyles}
         center={coords}
       >
