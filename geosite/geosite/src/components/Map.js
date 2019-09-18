@@ -1,24 +1,15 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { connect} from 'react-redux';
 import KEYS from '../config/keys';
 
 class MapContainer extends React.Component {
   constructor (props){
     super(props);
-
-    this.state={
-      employers: [{
-        lat: 34.0522, lng: -118.2437
-      }],
-      residences:[{
-        lat: 37.8044, lng: -122.2712
-      }]
-
-    }
   }
 
-  displayMarkers = () => {
-    return this.state.residences.map( (residence, index) => {
+  displayMarkersResidences = () => {
+    return this.props.residences.map( (residence, index) => {
       return <Marker key={index} id={index} position={{
         lat: residence.lat,
         lng: residence.lng
@@ -27,13 +18,22 @@ class MapContainer extends React.Component {
       />
     })
   }
-  
+
+  displayMarkersEmployers = () => {
+    return this.props.employers.map( (employer, index) => {
+      return <Marker key={index} id={index} position={{
+        lat: employer.lat,
+        lng: employer.lng
+      }}
+      onClick={() => console.log("You clicked me!")}
+      />
+    })
+  }  
 
   render() {
     const mapStyles = {
-      width: '80%',
-      height: '80%',
-      
+      width: '100%',
+      height: '100%',
     };
 
     return (
@@ -43,12 +43,23 @@ class MapContainer extends React.Component {
         style={mapStyles}
         initialCenter={{ lat: 37.7749, lng: -122.4194 }}
       >
-        {this.displayMarkers()}
+        {this.displayMarkersResidences()}
+        {this.displayMarkersEmployers()}
       </Map>
     )
   }
 }
 
-export default GoogleApiWrapper({
+const mapStateToProps = state => {
+  return {
+    selectedLocation: state.selectedLocation,
+    residences: state.residences,
+    employers: state.employers
+  }
+}
+
+ const WrappedContainer = GoogleApiWrapper({
   apiKey: KEYS
 })(MapContainer);
+
+export default connect(mapStateToProps, {} )(WrappedContainer);

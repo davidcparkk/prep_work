@@ -2,17 +2,17 @@ import { combineReducers } from 'redux';
 
 const residencesReducer = () => {
   return [
-    { lat: 0, lng: 0, name: 'Oakland' },
-    { lat: 0, lng: 0, name: 'Downtown Los Angeles' },
-    { lat: 0, lng: 0, name: 'UCLA' },
+    { lat: 37.8044, lng: -122.2712, name: 'Oakland' },
+    { lat: 34.0407, lng: -118.2468, name: 'Downtown Los Angeles' },
+    { lat: 34.0689, lng: -118.4452, name: 'UCLA' },
   ]
 }
 
 const employersReducer = () => {
   return [
-    { lat: 0, lng: 0, name: 'App Academy'},
-    { lat: 0, lng: 0, name: 'AECOM' },
-    { lat: 0, lng: 0, name: 'Financial Compound' },
+    { lat: 37.7749, lng: -122.4194, name: 'App Academy'},
+    { lat: 34.0407, lng: -118.2468, name: 'AECOM' },
+    { lat: 34.0195, lng: -118.4912, name: 'Financial Compound' },
   ]
 }
 
