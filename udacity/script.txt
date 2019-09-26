@@ -1,0 +1,21 @@
+var API_URL = 'https://private-7e7394-udacityfrontendtest.apiary-mock.com'
+var API_PATH_SIGNUP = '/signup'
+
+function post(url, data, cb) {
+  var xhr = new XMLHttpRequest()
+  xhr.onload = function() {
+    cb(JSON.parse(this.responseText))
+  }
+  xhr.open('POST', url)
+  xhr.setRequestHeader("Content-Type", "application/json")
+  xhr.send(JSON.stringify(data))
+}
+
+window.submitForm = function() {
+  post(API_URL, {
+    username: document.querySelector('#username').value,
+    password: document.querySelector('#password').value
+  }, function(res) {
+    console.log(res)
+  })
+}
