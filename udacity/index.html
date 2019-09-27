@@ -5,20 +5,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Udacity Frontend Exercise v1.61</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito">
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="script.js"></script>
 </head>
 
 <body>
-
-  <div class="content">
-    <form>
+  <div class="header">
+    <h1>Udacity Sign Up and Sign In Page</h1>
+    <h3>Coding Challenge (David Park)</h3>
+  </div>
+  <div id="loading"></div>
+  <div id="content">
+    <form onsubmit="event.preventDefault(); validateForm();">
       <div class="form-group">
         <span>Full Name (Optional)</span>
-        <input type="text" id="username" />
+        <input type="text" id="fullname" />
       </div>
       <div class="form-group">
         <span>Email</span>
-        <input type="text" id="username" />
+        <input type="text" id="email" />
       </div>
       <div class="form-group">
         <span>Username</span>
@@ -56,7 +62,7 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  
 </body>
 
 </html>
