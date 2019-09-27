@@ -3,30 +3,66 @@ var API_PATH_SIGNUP = '/signup';
 var API_PATH_SIGNIN = '/signin';
 
 function post(url, data, cb) {
-  var xhr = new XMLHttpRequest()
+  return new Promise(function(resolve,reject){
+    var xhr = new XMLHttpRequest()
+    xhr.open('POST', url)
+    xhr.setRequestHeader("Content-Type", "application/json")
+    
+    xhr.onload = function() {
+      if (this.status >= 200 && this.status < 300){
+        resolve(xhr.response);
+      } else {
+        reject({
+          status: this.status,
+          statusText: xhr.statusText
+        });
+      }
+    };
+    xhr.onerror = function() {
+      reject({
+        status: this.status,
+        statusText: xhr.statusText
+      });
+    };
+    xhr.send(JSON.stringify(data));
+      // cb(JSON.parse(this.responseText))
+    
+
+    
+
+  });
   
-  xhr.open('POST', url)
-  xhr.setRequestHeader("Content-Type", "application/json")
-  xhr.send(JSON.stringify(data));
-  xhr.onload = function() {
-    cb(JSON.parse(this.responseText))
-  }
 }
 
+// var xhr = new XMLHttpRequest()
+  
+//   xhr.open('POST', url)
+//   xhr.setRequestHeader("Content-Type", "application/json")
+//   xhr.send(JSON.stringify(data));
+//   xhr.onload = function() {
+//     cb(JSON.parse(this.responseText))
+//   }
+
 function submitForm(path) {
-  post(API_URL+path, {
+  loading();
+  post(API_URL + path, {
     username: document.querySelector('#username').value,
     password: document.querySelector('#password').value
   }, function(res) {
-    console.log(res)
-  })
+    console.log(res);
+  }).then(function(datums){
+    console.log(datums);
+    removeLoading();
+  }).catch(function(err){
+    console.log('Error', err.statusText);
+    removeLoading();
+  });
 }
 
 function validateForm(action){
   const username = document.querySelector('#username').value;
   const password = document.querySelector('#password').value;
   const email = document.querySelector('#email').value;
-  const actionItem = action.form;
 
   if(username === ""){
     alert("Username must be filled out. Try again!")
@@ -46,17 +82,22 @@ function validateForm(action){
   if(action.id === "sign-up"){
     submitForm(API_PATH_SIGNUP);
     console.log('signed up');
-    loading();
-  }  else if (action.id === "sign-in"){
+    // loading();
+  } else if (action.id === "sign-in"){
     submitForm(API_PATH_SIGNIN);
     console.log('signed in');
-    loading();
+    // loading();
   }
 }
 
 function loading(){
   document.getElementById("content").style.visibility = "hidden";
   document.getElementById("loading").style.display = "block";
+}
+
+function removeLoading(){
+  document.getElementById("content").style.visibility = "inline-block";
+  document.getElementById("loading").style.display = "none";
 }
 
 // change class to input invalid, errors
