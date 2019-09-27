@@ -25,23 +25,8 @@ function post(url, data, cb) {
       });
     };
     xhr.send(JSON.stringify(data));
-      // cb(JSON.parse(this.responseText))
-    
-
-    
-
   });
-  
 }
-
-// var xhr = new XMLHttpRequest()
-  
-//   xhr.open('POST', url)
-//   xhr.setRequestHeader("Content-Type", "application/json")
-//   xhr.send(JSON.stringify(data));
-//   xhr.onload = function() {
-//     cb(JSON.parse(this.responseText))
-//   }
 
 function submitForm(path) {
   loading();
@@ -53,9 +38,15 @@ function submitForm(path) {
   }).then(function(datums){
     console.log(datums);
     removeLoading();
+    const message = document.querySelector('#message');
+    message.classList.add('messageDisplay');
+    message.innerHTML = "Successfully signed in!";
   }).catch(function(err){
-    console.log('Error', err.statusText);
+    console.log(err);
     removeLoading();
+    const message = document.querySelector('#message');
+    message.classList.add('messageDisplay');
+    message.innerHTML = "Sorry, please try again";
   });
 }
 
@@ -82,11 +73,9 @@ function validateForm(action){
   if(action.id === "sign-up"){
     submitForm(API_PATH_SIGNUP);
     console.log('signed up');
-    // loading();
   } else if (action.id === "sign-in"){
     submitForm(API_PATH_SIGNIN);
     console.log('signed in');
-    // loading();
   }
 }
 
@@ -96,7 +85,8 @@ function loading(){
 }
 
 function removeLoading(){
-  document.getElementById("content").style.visibility = "inline-block";
+  document.getElementById("content").style.display = "flex";
+  document.getElementById("content").style.visibility = "visible";
   document.getElementById("loading").style.display = "none";
 }
 
