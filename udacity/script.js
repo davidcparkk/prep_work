@@ -1,5 +1,6 @@
-var API_URL = 'https://private-7e7394-udacityfrontendtest.apiary-mock.com'
-var API_PATH_SIGNUP = '/signup'
+var API_URL = 'https://private-7e7394-udacityfrontendtest.apiary-mock.com';
+var API_PATH_SIGNUP = '/signup';
+var API_PATH_SIGNIN = '/signin';
 
 function post(url, data, cb) {
   var xhr = new XMLHttpRequest()
@@ -12,8 +13,8 @@ function post(url, data, cb) {
   }
 }
 
-function submitForm() {
-  post(API_URL+API_PATH_SIGNUP, {
+function submitForm(path) {
+  post(API_URL+path, {
     username: document.querySelector('#username').value,
     password: document.querySelector('#password').value
   }, function(res) {
@@ -21,10 +22,11 @@ function submitForm() {
   })
 }
 
-function validateForm(){
+function validateForm(action){
   const username = document.querySelector('#username').value;
   const password = document.querySelector('#password').value;
   const email = document.querySelector('#email').value;
+  const actionItem = action.form;
 
   if(username === ""){
     alert("Username must be filled out. Try again!")
@@ -40,9 +42,16 @@ function validateForm(){
     alert("Password must be filled out and be at least 6 characters long");
     return false;
   }
-
-  submitForm();
-  loading();
+  
+  if(action.id === "sign-up"){
+    submitForm(API_PATH_SIGNUP);
+    console.log('signed up');
+    loading();
+  }  else if (action.id === "sign-in"){
+    submitForm(API_PATH_SIGNIN);
+    console.log('signed in');
+    loading();
+  }
 }
 
 function loading(){
