@@ -2,6 +2,37 @@ body{
   font-family: 'Nunito', sans-serif;
 }
 
+#sign-up{
+  background-color: #1db954;
+  color: white;
+  width: 40%;
+  height: 45px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 25px;
+  text-transform: uppercase;
+}
+
+#sign-in{
+  background-color: #3b5998;
+  color: white;
+  width: 40%;
+  height: 45px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 25px;
+  text-transform: uppercase;
+}
+
+.button-container{
+  display:flex; 
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
 .intro {
     margin-top: 50px;
     width: 100%;
@@ -17,12 +48,13 @@ body{
     color: red;
     display: flex;
     justify-content: center;
-    padding-bottom: 15px;
+    padding-top: 25px;
   }
   
   #content {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 25px;
     max-width: 500px;
     padding: 35px 65px 45px 65px;
     display: flex;
@@ -31,7 +63,7 @@ body{
     border-style: solid;
     border-width: 1px;
     border-color: gray;
-    background-color: #7fdbff;
+    /* background-color: #7fdbff; */
     border-radius: 35px;
     opacity: 0.8;
   }
@@ -80,7 +112,9 @@ body{
     justify-content: space-evenly;
     flex-direction: column;
     padding-left: 1em;
-    padding-bottom: 35px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    border-bottom: 1px solid gray;
   }
 
   h1, h3 {
