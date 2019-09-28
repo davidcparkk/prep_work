@@ -2,26 +2,42 @@ var API_URL = 'https://private-7e7394-udacityfrontendtest.apiary-mock.com';
 var API_PATH_SIGNUP = '/signup';
 var API_PATH_SIGNIN = '/signin';
 
-function post(url, data, cb) {
+let el1 = document.getElementById("sign-up");
+if(el1) {
+  el1.addEventListener('click', function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    validateForm(this);
+  }, false );
+};
+let el2 = document.getElementById("sign-in");
+if(el2){
+  el2.addEventListener('click', function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    validateForm(this);
+  }, false );
+}
+
+function post(url, data) {
   return new Promise(function(resolve,reject){
-    var xhr = new XMLHttpRequest()
-    xhr.open('POST', url)
-    xhr.setRequestHeader("Content-Type", "application/json")
-    // xhr.onData
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onload = function() {
       if (this.status >= 200 && this.status < 300){
         resolve(xhr.response);
       } else {
         reject({
           status: this.status,
-          statusText: xhr.response
+          statusText: JSON.parse(xhr.response)
         });
       }
     };
     xhr.onerror = function() {
       reject({
         status: this.status,
-        statusText: xhr.response
+        statusText: JSON.parse(xhr.response)
       });
     };
     xhr.send(JSON.stringify(data));
@@ -40,7 +56,7 @@ function submitForm(path) {
     removeLoading();
     const message = document.querySelector('#message');
     message.classList.add('messageDisplay');
-    message.innerHTML = "Successfully signed in!";
+    message.innerText = `${datums.statusText.message}`;
     // innerText not HTML
     // name/for labelinput
     // collects input
@@ -55,28 +71,47 @@ function submitForm(path) {
     removeLoading();
     const message = document.querySelector('#message');
     message.classList.add('messageDisplay');
-    message.innerHTML = "Sorry, please try again";
+    message.innerText = `${err.statusText.message}`;;
   });
 }
 
 function validateForm(action){
+  
   const username = document.querySelector('#username').value;
   const password = document.querySelector('#password').value;
   const email = document.querySelector('#email').value;
 
   if(username === ""){
-    alert("Username must be filled out. Try again!")
+    const error = document.createElement('span');
+    var node = document.createTextNode('Username must be filled out.');
+    error.appendChild(node);
+    const element = document.getElementById('username');
+    element.parentNode.insertBefore(error, element.nextSibling);
     return false;
+    // alert("Username must be filled out. Try again!")
+    // return false;
   }
 
   if(email === ""){
-    alert("Email must be filled out. Try again!")
+    const error = document.createElement('span');
+    var node = document.createTextNode('Email must be filled out.');
+    error.appendChild(node);
+    const element = document.getElementById('email');
+    element.parentNode.insertBefore(error, element.nextSibling);
     return false;
+    // alert("Email must be filled out. Try again!")
+    // return false;
   }
 
   if(password === "" || password.length < 6){
-    alert("Password must be filled out and be at least 6 characters long");
+    const error = document.createElement('span');
+    var node = document.createTextNode('Password must be filled out and be at least 6 characters long.');
+    error.appendChild(node);
+    const element = document.getElementById('password');
+    element.parentNode.insertBefore(error, element.nextSibling);
     return false;
+    // alert("Password must be filled out and at least 6 characters long");
+    // return false;
   }
   
   if(action.id === "sign-up"){
