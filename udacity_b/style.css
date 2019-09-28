@@ -9,6 +9,10 @@ body{
     padding-right: 20px;
   }
 
+  .error{
+    color:red;
+  }
+
   .messageDisplay{
     color: red;
     display: flex;
@@ -19,8 +23,8 @@ body{
   #content {
     margin-left: auto;
     margin-right: auto;
-    max-width: 400px;
-    padding: 25px 55px 35px 55px;
+    max-width: 500px;
+    padding: 35px 65px 45px 65px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,6 +54,7 @@ body{
   
   .form-group {
     margin: 1em 0;
+    padding: 2px 0 2px 0;
   }
   
   .form-group label {
@@ -60,7 +65,7 @@ body{
     width: 100%;
     border-radius: 5px;
     padding: 5px;
-    font-size: 17px;
+    font-size: 25px;
   }
 
   #sign-up #sign-in{
