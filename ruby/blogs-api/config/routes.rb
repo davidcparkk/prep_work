@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :ping, :defaults => { :format => :json}
+  namespace :api, defaults:{format: :json} do 
+    resource :ping, only: [:show]
+  end
 end
