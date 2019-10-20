@@ -6,7 +6,7 @@ RSpec.describe 'Pings API', type: :request do
   
 
   # Test suite for GET /todos
-  describe 'GET /ping' do
+  describe 'GET /api/ping' do
     # make HTTP get request before each example
     before { get '/api/ping' }
 

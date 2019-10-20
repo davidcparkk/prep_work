@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_19_210648) do
+ActiveRecord::Schema.define(version: 2019_10_20_040440) do
 
   create_table "pings", force: :cascade do |t|
     t.boolean "success"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "author"
+    t.integer "authorId"
+    t.integer "likes"
+    t.float "popularity"
+    t.integer "reads"
+    t.string "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
