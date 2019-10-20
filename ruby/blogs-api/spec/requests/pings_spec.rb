@@ -6,11 +6,11 @@ RSpec.describe 'Pings API', type: :request do
   
 
   # Test suite for GET /todos
-  describe 'GET /pings' do
+  describe 'GET /ping' do
     # make HTTP get request before each example
-    before { get '/pings' }
+    before { get '/api/ping' }
 
-    it 'returns pings' do
+    it 'returns ping' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
       expect(json.size).to eq(1)

@@ -6,21 +6,21 @@ class Api::PostsController < ApplicationController
   DIRECTION = {"asc": true, "desc": true}
 
   def index
-      request_params = request.query_parameters
-      tags = request_params[:tag].split(',')
-      sortBy = request_params[:sortBy]
-      direction = request_params[:direction]
-      result = {'posts': []}
-
-    if !tags
-      url = URI.parse('https://hatchways.io/api/assessment/blog/posts')
-      req = Net::HTTP::Get.new(url.to_s)
-      http = Net::HTTP.new(url.host, url.port)
-      http.use_ssl = (url.scheme == "https")
-      response = http.request(req)
-      json_response(response.body)
+    request_params = request.query_parameters
+    
+    if request_params[:tags]
+        tags = request_params[:tags].split(',')
+    else
+      render json: {error:"Tags parameter is required"}, status: 400
       return
-    elsif tags
+    end
+
+    sortBy = request_params[:sortBy]
+    direction = request_params[:direction]
+    result = {'posts': []}
+
+      
+    if tags
       tags.each do |tag|
         url = URI.parse("https://hatchways.io/api/assessment/blog/posts?tag=#{tag}")
         req = Net::HTTP::Get.new(url.to_s)
@@ -30,6 +30,8 @@ class Api::PostsController < ApplicationController
         response = JSON.parse(response.body)
         result[:posts].concat(response['posts'])
       end
+
+      result[:posts] = result[:posts].uniq
 
       if direction && DIRECTION[direction.to_sym] != true
         render json: {error:"Direction parameters not valid"}, status: 400
