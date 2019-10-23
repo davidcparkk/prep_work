@@ -37,35 +37,43 @@ class App extends React.Component{
     })
   }
 
-  strikeThrough = (e) => {
-    if (!e.target.checked){
-      e.target.checked = true;
-      e.target.textDecor = 'line';
-    }
-
-
-
-    // if (!items[idx].checked){
-    //   items[idx].checked = true;
-    //   items[idx].textDecor = 'line';
-    //   this.setState({
-    //     items: items
-    //   })
+  strikeThrough = (idx) => {
+    // if (!e.target.checked){
+    //   e.target.checked = true;
+    //   e.target.textDecor = 'line';
     // } else {
-    //   items[idx].checked = false;
-    //   items[idx].textDecor = null;
-    //   this.setState({
-    //     items: items
-    //   })
+    //   e.target.checked = false;
+    //   e.target.textDecor = null;
     // }
+
+    let items = [...this.state.items];
+
+    if (!items[idx].checked){
+      items[idx].checked = true;
+      items[idx].textDecor = 'line';
+      this.setState({
+        items: items
+      })
+    } else {
+      items[idx].checked = false;
+      items[idx].textDecor = null;
+      this.setState({
+        items: items
+      })
+    }
   }
 
   render(){
     const renderedlist = this.state.items.map( (el,idx) => {
       return(
         <li key={el.num}>
-          <input type ='checkbox' onChange={this.strikeThrough} check="check"></input>
-          <span>{el.num}. {el.title}</span>
+          <input 
+            type ='checkbox' 
+            onChange={(e) => this.strikeThrough(idx)} 
+            
+            ></input>
+          <span 
+            style={{textDecoration: el.checked ? "line-through" : "none" }}>{el.num}. {el.title}</span>
           <button onClick={() => this.removeListItem(el.num)}>X</button>
         </li>
       )
