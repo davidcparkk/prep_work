@@ -1,0 +1,23 @@
+input{
+  width: 200px;
+}
+
+button{
+  width: auto;
+  height: 100%;
+}
+
+ul{
+  display:flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+li{
+  display:flex;
+  list-style-type:none;
+}
+
+#actions{
+  display:flex;
+}
