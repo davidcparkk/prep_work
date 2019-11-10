@@ -6,15 +6,13 @@ class TaskList{
   }
 
   run(arg){
-
-
     if(this.count < this.maxConcurrency){
       this.count++;
       return new Promise(function(resolve){
         
         setTimeout(function(){
-          console.log('done')
           resolve();
+          console.log('done')
         },1000);
 
         console.log('running');

@@ -15,7 +15,7 @@ window.onload = function(){
   let dropdown = document.getElementById('dropdown');
 
   const api_request = async (id) => {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+    const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {mode: 'cors'});
     return response.json();
   }
 

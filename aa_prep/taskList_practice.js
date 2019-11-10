@@ -15,13 +15,13 @@ class TaskList {
       return new Promise((resolve, reject) => {
         setTimeout(function(){
           resolve();
-          console.log('done')
-        },1000);
-        console.log('running')
+          console.log('done', arg)
+        },10);
+        console.log('running', arg)
       }).then( response => {
         this.count--;
-        let nextJob = this.queue.shift();
         if (this.queue.length > 0){
+          let nextJob = this.queue.shift();
           this.run(nextJob);
         }
       })
@@ -42,7 +42,7 @@ class TaskList {
 const getTodo = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      let error = true;
+      let error = false;
       if(!error){
         resolve({ text: "complete example "})
       } else {
