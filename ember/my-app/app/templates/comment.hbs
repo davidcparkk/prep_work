@@ -1,6 +1,10 @@
-<h1>{{title}}</h1>
-<p>{{body}}</p>
-
+<h1 {{action 'toggleBody'}}>{{title}}</h1>
+<p>
+  Created {{formatDate created}}
+</p>
+{{#if isShowingBody}}
+  <p>{{body}}</p>
+{{/if}}
 <p>
   <strong>Authors: </strong>
   {{#each authors as |author|}}
@@ -14,3 +18,16 @@
     <li><strong>{{comment.name}}</strong> - {{comment.content}}</li>
   {{/each}}
 </ul>
+
+<button {{action 'sayHello'}}>Say hello</button>
+
+<hr>
+<form {{action 'handleSubmit' on="submit"}}>
+  <p>
+    Name: {{input value=name}}
+  </p>
+  <p>
+    Content: {{textarea value=content}}
+  </p>
+  <button type="submit">Click here</button>
+</form>
