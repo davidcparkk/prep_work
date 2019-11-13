@@ -16,6 +16,7 @@ Router.map(function() {
     // this.path('post', {path: ':post_id'});
   });
   this.route('events');
+  this.route('comment');
 });
 
 export default Router;
